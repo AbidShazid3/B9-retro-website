@@ -71,7 +71,34 @@ function setInnerText(id, value){
 const loadLatestPost = async()=>{
     const res = await fetch("https://openapi.programming-hero.com/api/retro-forum/latest-posts");
     const data = await res.json();
-    console.log(data);
+    
+    const latestPostContainer = document.getElementById("latest-post-container");
+    data.forEach((item)=>{
+        console.log(item);
+        const divNew = document.createElement("div");
+        divNew.classList = `card bg-base-100 shadow-xl`;
+        divNew.innerHTML = `
+                <figure class="px-10 pt-10 ">
+                        <img src="${item.cover_image}" />
+                </figure>
+                    <div class="card-body">
+                        <div class="flex gap-5">
+                            <img src="images/date.png" alt="">
+                            <p>${item.author?.posted_date || 'No publish date'}</p>
+                        </div>
+                        <h2 class="card-title font-extrabold">${item.title}</h2>
+                        <p>${item.description}</p>
+                        <div class="card-actions">
+                            <img src="${item.profile_image}" alt="" class="w-11 rounded-full">
+                            <div>
+                                <h1 class="font-bold">${item.author.name}</h1>
+                                <p>${item.author?.designation || 'Unknown'}</p>
+                            </div>
+                        </div>
+                    </div>
+        `;
+        latestPostContainer.appendChild(divNew);
+    })
 }
 
 loadLatestPost();
