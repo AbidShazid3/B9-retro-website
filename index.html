@@ -61,8 +61,9 @@
                         <p class="py-6 text-white">Search your favorite forum</p>
                         <label
                             class="input input-bordered flex items-center rounded-full md:gap-2 lg:gap-2 w-full max-w-72 md:max-w-xs lg:max-w-xs">
-                            <input type="text" class="grow" placeholder="Search here anything" />
-                            <button class="btn btn-accent text-white text-sm font-bold rounded-full ">Search</button>
+                            <input id="input-field" type="text" class="grow" placeholder="Search here anything" />
+                            <button onclick="handleSearch()"
+                                class="btn btn-accent text-white text-sm font-bold rounded-full">Search</button>
                         </label>
                     </div>
                     <div class="menu bg-base-200 w-56 rounded-box p-12 gap-4">
@@ -93,10 +94,16 @@
             <p>Here, was the all post and view the results directly within the app. The integrated testing features
                 allow for a streamlined .</p>
         </div>
+        <div id="loading-spiner" class="hidden text-center mt-10">
+            <span class="loading loading-bars loading-xs"></span>
+            <span class="loading loading-bars loading-sm"></span>
+            <span class="loading loading-bars loading-md"></span>
+            <span class="loading loading-bars loading-lg"></span>
+        </div>
         <!-- showing all post -->
         <section class="mt-8 lg:flex gap-4">
             <div id="all-post-container" class="flex-1">
-                
+
             </div>
             <!-- title show -->
             <div class="flex-1">
@@ -106,7 +113,7 @@
                         <p>Mark as read(<span id="read-count">0</span>)</p>
                     </div>
                     <div id="title-view-container">
-                        
+
                     </div>
                 </div>
             </div>
@@ -117,7 +124,8 @@
                 <div class="hero-content flex-col lg:flex-row gap-8 p-10">
                     <div>
                         <h1 class="text-6xl font-black text-white">Join Our Forum</h1>
-                        <p class="py-6 text-white">Registered now to access exclusive content, participate in polls, ask questions, and contribute to a growing community of our forum's target audience.</p>
+                        <p class="py-6 text-white">Registered now to access exclusive content, participate in polls, ask
+                            questions, and contribute to a growing community of our forum's target audience.</p>
                         <button class="btn text-white text-sm font-bold bg-[#797DFC] border-none">Registered
                             Now</button>
                     </div>
@@ -133,14 +141,15 @@
             </div>
             <!-- showing latest post -->
             <div id="latest-post-container" class="grid lg:grid-cols-3 gap-4 mt-8">
-                
+
             </div>
         </section>
     </main>
     <footer class="footer footer-center p-10 bg-base-200 text-base-content rounded mt-8 lg:p-24">
         <nav class="gap-4">
             <h1 class="text-[#12132D] text-3xl font-black">ReTro</h1>
-            <p>Retro, short for "retrospective," is a term often used in various contexts to refer to styles, designs, or concepts that <br> evoke the past, particularly from the mid-20th century or earlier.</p>
+            <p>Retro, short for "retrospective," is a term often used in various contexts to refer to styles, designs,
+                or concepts that <br> evoke the past, particularly from the mid-20th century or earlier.</p>
         </nav>
         <nav>
             <div class="grid grid-flow-col gap-10">

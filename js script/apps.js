@@ -1,11 +1,13 @@
 
 const loadPost = async()=>{
+    document.getElementById("loading-spiner").classList.remove("hidden");
     const res = await fetch("https://openapi.programming-hero.com/api/retro-forum/posts");
     const data = await res.json();
     const posts = data.posts;
 
     const allPostContainer = document.getElementById("all-post-container");
     posts.forEach((items) =>{
+        document.getElementById("loading-spiner").classList.add("hidden");
         const div = document.createElement("div");
         div.classList = `hero bg-base-200 rounded-xl mb-4`;
         div.innerHTML = `
@@ -38,6 +40,7 @@ const loadPost = async()=>{
                         </div>
                     </div>
         `;
+        
         allPostContainer.appendChild(div);
     })
 }
@@ -74,7 +77,6 @@ const loadLatestPost = async()=>{
     
     const latestPostContainer = document.getElementById("latest-post-container");
     data.forEach((item)=>{
-        console.log(item);
         const divNew = document.createElement("div");
         divNew.classList = `card bg-base-100 shadow-xl`;
         divNew.innerHTML = `
@@ -100,6 +102,16 @@ const loadLatestPost = async()=>{
         latestPostContainer.appendChild(divNew);
     })
 }
+
+// const handleSearch = () =>{
+//     const value = document.getElementById("input-field").value;
+//     if(value){
+//         loadPost(value);
+//     }
+//     else{
+//         alert("please enter a valid name");
+//     }
+// }
 
 loadLatestPost();
 
